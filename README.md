@@ -1,2 +1,2 @@
-# sciplay assignment - connect four game in java 
+# sciplay assignment - Connect Four Game implementation in java 
 # Author: Tamir Mayblat
