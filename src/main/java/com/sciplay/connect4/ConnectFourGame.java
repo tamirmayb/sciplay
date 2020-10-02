@@ -6,13 +6,13 @@ public class ConnectFourGame {
 
     private enum Player {
         RED_PLAYER('R', "Red"),
-        BLACK_PLAYER('B', "Black");
+        YELLOW_PLAYER('Y', "Yellow");
 
-        public final char gameIcon;
+        public final char checker;
         public final String name;
 
-        Player(char gameIcon, String name) {
-            this.gameIcon = gameIcon;
+        Player(char checker, String name) {
+            this.checker = checker;
             this.name = name;
         }
     }
@@ -40,7 +40,7 @@ public class ConnectFourGame {
             do {
                 displayGameBoard(board);
 
-                System.out.print(currentPlayer.name + ", player, choose column for your next move: ");
+                System.out.print(currentPlayer.name + " player, choose column for your next move: ");
                 play = in.nextInt();
 
                 //validate move
@@ -51,17 +51,17 @@ public class ConnectFourGame {
             //drop the checker onto selected column
             for (int row = board.length - 1; row >= 0; row--) {
                 if(board[row][play] == ' '){
-                    board[row][play] = currentPlayer.gameIcon;
+                    board[row][play] = currentPlayer.checker;
                     break;
                 }
             }
 
             //check if a player won
-            foundWinner = checkWinner(currentPlayer.gameIcon, board);
+            foundWinner = checkWinner(currentPlayer.checker, board);
 
             //switch turns
             if(!foundWinner) {
-                currentPlayer = (currentPlayer == Player.RED_PLAYER ? Player.BLACK_PLAYER : Player.RED_PLAYER);
+                currentPlayer = (currentPlayer == Player.RED_PLAYER ? Player.YELLOW_PLAYER : Player.RED_PLAYER);
                 turn++;
             }
 
